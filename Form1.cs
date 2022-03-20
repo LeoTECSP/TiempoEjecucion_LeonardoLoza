@@ -12,6 +12,9 @@ namespace TiempoEjecucion_LeonardoLoza
 {
     public partial class Form1 : Form
     {
+        GeneracionBeca AccederBeca = new GeneracionBeca();
+        public static string NombrePersona;
+
         public Form1()
         {
             InitializeComponent();
@@ -238,12 +241,48 @@ namespace TiempoEjecucion_LeonardoLoza
 
             this.Controls.Add(vistaEstadoCivil);
 
-            #endregion 
+            #endregion
+
+            #region Botones Normales
+
+            Button botonIngresar = new Button();
+            Button botonSalir = new Button();
 
 
+            botonIngresar.Name = "btnAceptar";
+            botonIngresar.Text = "Aceptar";
+            botonIngresar.Enabled = true;
+            botonIngresar.Location = new Point(320, 300);
 
+            botonSalir.Name = "btnSalir";
+            botonSalir.Text = "Salir";
+            botonSalir.Enabled = true;
+            botonSalir.Location = new Point(400, 300);
+
+            this.Controls.Add(botonIngresar);
+            this.Controls.Add(botonSalir);
+            #endregion
+
+
+            #region Eventos
+
+            botonIngresar.Click += BotonIngresar_Click;
+            #endregion
+
+            NombrePersona = cajaTextoNombre.Text.ToString();
         }
 
+        private void BotonIngresar_Click(object sender, EventArgs e)
+        {
+           
 
+            
+            this.Hide();
+            AccederBeca.ShowDialog();
+         
+
+           
+
+        }
     }
 }
